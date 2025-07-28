@@ -1,30 +1,29 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 
-export default function AliZokaeiLanding() {
+export default function SamAsghariLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const carouselItems = [
     {
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/sam1.jpg",
       title: "Editorial Fashion",
       subtitle: "Vogue Magazine Feature",
     },
     {
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/sam2.jpg",
       title: "Luxury Campaign",
       subtitle: "International Brand",
     },
     {
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/sam3.jpg",
       title: "Artistic Portrait",
       subtitle: "Fine Art Collection",
     },
     {
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/sam4.jpg",
       title: "Fashion Week",
       subtitle: "Milan Runway",
     },
@@ -44,7 +43,7 @@ export default function AliZokaeiLanding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold tracking-tight">
-              Ali <span className="font-light">Zokaei</span>
+              Sam <span className="font-light">Asghari</span>
             </div>
 
             {/* Desktop Navigation */}
@@ -174,7 +173,7 @@ export default function AliZokaeiLanding() {
             {carouselItems.map((item, index) => (
               <div key={index} className="w-full flex-shrink-0 h-full">
                 <div className="relative h-full">
-                  <Image src={item.image || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
+                  <img src={item.image || "/placeholder.svg"} alt={item.title} className="object-cover w-full h-full" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-20 left-8 md:left-16 text-white max-w-2xl">
                     <h3 className="text-4xl md:text-6xl font-bold mb-4">{item.title}</h3>
@@ -242,9 +241,9 @@ export default function AliZokaeiLanding() {
                   </span>
                 </div>
                 <h1 className="text-6xl md:text-8xl font-bold leading-none tracking-tight">
-                  Ali
+                  Sam
                   <br />
-                  <span className="text-gray-400 font-light">Zokaei</span>
+                  <span className="text-gray-400 font-light">Asghari</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-600 max-w-lg leading-relaxed">
                   Crafting visual stories through elegance, sophistication, and artistic expression
@@ -323,11 +322,10 @@ export default function AliZokaeiLanding() {
             <div className="relative">
               <div className="relative">
                 <div className="aspect-[3/4] bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden rounded-2xl shadow-2xl">
-                  <Image
-                    src="/placeholder.svg?height=800&width=600"
+                  <img
+                    src="/images/sam5.jpg"
                     alt="Sam Asghari - Professional Model"
-                    fill
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 {/* Floating Elements */}
@@ -389,37 +387,33 @@ export default function AliZokaeiLanding() {
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6">
                 <div className="aspect-[3/4] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <Image
-                    src="/placeholder.svg?height=400&width=300"
+                  <img
+                    src="/images/sam6.jpg"
                     alt="Sam Asghari modeling"
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-transform duration-500 w-full h-full"
                   />
                 </div>
                 <div className="aspect-square bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <Image
-                    src="/placeholder.svg?height=300&width=300"
+                  <img
+                    src="/images/sam7.jpg"
                     alt="Sam Asghari artistic shot"
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-transform duration-500 w-full h-full"
                   />
                 </div>
               </div>
               <div className="space-y-6 pt-12">
                 <div className="aspect-square bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <Image
-                    src="/placeholder.svg?height=300&width=300"
+                  <img
+                    src="/images/sam8.jpg"
                     alt="Sam Asghari commercial"
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-transform duration-500 w-full h-full"
                   />
                 </div>
                 <div className="aspect-[3/4] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <Image
-                    src="/placeholder.svg?height=400&width=300"
+                  <img
+                    src="/images/sam9.jpg"
                     alt="Sam Asghari full body"
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    className="object-cover hover:scale-105 transition-transform duration-500 w-full h-full"
                   />
                 </div>
               </div>
@@ -451,11 +445,10 @@ export default function AliZokaeiLanding() {
             {[1, 2, 3, 4, 5, 6].map((item) => (
               <div key={item} className="group cursor-pointer">
                 <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                  <Image
-                    src={`/placeholder.svg?height=500&width=400&query=professional model portfolio image ${item} black and white editorial`}
+                  <img
+                    src={`/images/sam${item}.jpg`}
                     alt={`Portfolio image ${item}`}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 w-full h-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-6 left-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
@@ -595,7 +588,7 @@ export default function AliZokaeiLanding() {
                   </div>
                   <div>
                     <p className="font-semibold text-lg">Email</p>
-                    <p className="text-gray-600">ali.zokaei@email.com</p>
+                    <p className="text-gray-600">ali.asghari@email.com</p>
                   </div>
                 </div>
 
@@ -725,7 +718,7 @@ export default function AliZokaeiLanding() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
             <div className="text-center md:text-left">
               <div className="text-3xl font-bold mb-2">
-                Ali <span className="font-light text-gray-400">Zokaei</span>
+                Sam <span className="font-light text-gray-400">Asghari</span>
               </div>
               <p className="text-gray-400">Professional Model & Creative Artist</p>
             </div>
