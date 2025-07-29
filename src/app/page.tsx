@@ -6,6 +6,17 @@ export default function SamAsghariLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
 
+  // Smooth scroll function
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
   const carouselItems = [
     {
       image: "/images/sam1.jpg",
@@ -37,7 +48,7 @@ export default function SamAsghariLanding() {
   }, [carouselItems.length])
 
   return (
-    <div className="min-h-screen bg-white text-black overflow-x-hidden">
+    <div className="min-h-screen bg-white text-black overflow-x-hidden" style={{ scrollBehavior: 'smooth' }}>
       {/* Fixed Header */}
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-100 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,51 +59,51 @@ export default function SamAsghariLanding() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-12">
-              <a
-                href="#home"
+              <button
+                onClick={() => scrollToSection('home')}
                 className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Home
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a
-                href="#about"
+              </button>
+              <button
+                onClick={() => scrollToSection('about')}
                 className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 About
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a
-                href="#portfolio"
+              </button>
+              <button
+                onClick={() => scrollToSection('portfolio')}
                 className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Portfolio
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a
-                href="#services"
+              </button>
+              <button
+                onClick={() => scrollToSection('services')}
                 className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Services
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a
-                href="#contact"
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
                 className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </button>
             </nav>
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <a
-                href="#contact"
+              <button
+                onClick={() => scrollToSection('contact')}
                 className="bg-black text-white px-6 py-2 text-sm font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
               >
                 Book Now
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -115,48 +126,60 @@ export default function SamAsghariLanding() {
           {isMenuOpen && (
             <nav className="lg:hidden pb-6 border-t border-gray-100 mt-4 pt-6">
               <div className="flex flex-col space-y-6">
-                <a
-                  href="#home"
-                  className="text-lg font-medium hover:text-gray-600 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => {
+                    scrollToSection('home')
+                    setIsMenuOpen(false)
+                  }}
+                  className="text-lg font-medium hover:text-gray-600 transition-colors text-left"
                 >
                   Home
-                </a>
-                <a
-                  href="#about"
-                  className="text-lg font-medium hover:text-gray-600 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('about')
+                    setIsMenuOpen(false)
+                  }}
+                  className="text-lg font-medium hover:text-gray-600 transition-colors text-left"
                 >
                   About
-                </a>
-                <a
-                  href="#portfolio"
-                  className="text-lg font-medium hover:text-gray-600 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('portfolio')
+                    setIsMenuOpen(false)
+                  }}
+                  className="text-lg font-medium hover:text-gray-600 transition-colors text-left"
                 >
                   Portfolio
-                </a>
-                <a
-                  href="#services"
-                  className="text-lg font-medium hover:text-gray-600 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('services')
+                    setIsMenuOpen(false)
+                  }}
+                  className="text-lg font-medium hover:text-gray-600 transition-colors text-left"
                 >
                   Services
-                </a>
-                <a
-                  href="#contact"
-                  className="text-lg font-medium hover:text-gray-600 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('contact')
+                    setIsMenuOpen(false)
+                  }}
+                  className="text-lg font-medium hover:text-gray-600 transition-colors text-left"
                 >
                   Contact
-                </a>
-                <a
-                  href="#contact"
+                </button>
+                <button
+                  onClick={() => {
+                    scrollToSection('contact')
+                    setIsMenuOpen(false)
+                  }}
                   className="bg-black text-white px-6 py-3 text-center font-medium hover:bg-gray-800 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   Book Now
-                </a>
+                </button>
               </div>
             </nav>
           )}
@@ -178,15 +201,15 @@ export default function SamAsghariLanding() {
                   <div className="absolute bottom-16 md:bottom-20 left-4 md:left-8 lg:left-16 text-white max-w-xs md:max-w-2xl">
                     <h3 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-4">{item.title}</h3>
                     <p className="text-sm md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-8">{item.subtitle}</p>
-                    <a
-                      href="#portfolio"
+                    <button
+                      onClick={() => scrollToSection('portfolio')}
                       className="inline-flex items-center bg-white text-black px-4 md:px-8 py-2 md:py-4 text-sm md:text-base font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
                     >
                       View Portfolio
                       <svg className="w-3 h-3 md:w-4 md:h-4 ml-1 md:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -257,8 +280,8 @@ export default function SamAsghariLanding() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="#portfolio"
+                  <button
+                    onClick={() => scrollToSection('portfolio')}
                     className="group bg-black text-white px-8 py-4 text-center font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                   >
                     <span className="flex items-center justify-center">
@@ -277,9 +300,9 @@ export default function SamAsghariLanding() {
                         />
                       </svg>
                     </span>
-                  </a>
-                  <a
-                    href="#contact"
+                  </button>
+                  <button
+                    onClick={() => scrollToSection('contact')}
                     className="group border-2 border-black px-8 py-4 text-center font-medium hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105"
                   >
                     <span className="flex items-center justify-center">
@@ -298,7 +321,7 @@ export default function SamAsghariLanding() {
                         />
                       </svg>
                     </span>
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -461,15 +484,15 @@ export default function SamAsghariLanding() {
           </div>
 
           <div className="text-center mt-16">
-            <a
-              href="#contact"
+            <button
+              onClick={() => scrollToSection('contact')}
               className="inline-flex items-center bg-black text-white px-8 py-4 font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 rounded-lg"
             >
               View Full Portfolio
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </section>
