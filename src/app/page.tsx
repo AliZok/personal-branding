@@ -37,11 +37,11 @@ export default function SamAsghariLanding() {
   }, [carouselItems.length])
 
   return (
-    <div className="min-h-screen text-white" style={{ backgroundColor: '#2a2a2a' }}>
+    <div className="min-h-screen bg-white text-black">
       {/* Fixed Header */}
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-100 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4 text-black">
+          <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold tracking-tight">
               Sam <span className="font-light">Asghari</span>
             </div>
@@ -50,35 +50,35 @@ export default function SamAsghariLanding() {
             <nav className="hidden lg:flex items-center space-x-12">
               <a
                 href="#home"
-                className="text-sm font-medium hover:text-black transition-all duration-300 relative group"
+                className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Home
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#about"
-                className="text-sm font-medium hover:text-black transition-all duration-300 relative group"
+                className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 About
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#portfolio"
-                className="text-sm font-medium hover:text-black transition-all duration-300 relative group"
+                className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Portfolio
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#services"
-                className="text-sm font-medium hover:text-black transition-all duration-300 relative group"
+                className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Services
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#contact"
-                className="text-sm font-medium hover:text-black transition-all duration-300 relative group"
+                className="text-sm font-medium hover:text-gray-600 transition-all duration-300 relative group"
               >
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
@@ -117,35 +117,35 @@ export default function SamAsghariLanding() {
               <div className="flex flex-col space-y-6">
                 <a
                   href="#home"
-                  className="text-lg font-medium hover:text-white transition-colors"
+                  className="text-lg font-medium hover:text-gray-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
                 </a>
                 <a
                   href="#about"
-                  className="text-lg font-medium hover:text-white transition-colors"
+                  className="text-lg font-medium hover:text-gray-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About
                 </a>
                 <a
                   href="#portfolio"
-                  className="text-lg font-medium hover:text-white transition-colors"
+                  className="text-lg font-medium hover:text-gray-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Portfolio
                 </a>
                 <a
                   href="#services"
-                  className="text-lg font-medium hover:text-white transition-colors"
+                  className="text-lg font-medium hover:text-gray-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Services
                 </a>
                 <a
                   href="#contact"
-                  className="text-lg font-medium hover:text-white transition-colors"
+                  className="text-lg font-medium hover:text-gray-600 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
@@ -229,8 +229,7 @@ export default function SamAsghariLanding() {
       {/* Enhanced Hero Section */}
       <section
         id="home"
-        className="pt-32 lg:pt-40 min-h-screen flex items-center"
-        style={{ backgroundColor: '#2a2a2a' }}
+        className="pt-32 lg:pt-40 min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-white"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -246,13 +245,13 @@ export default function SamAsghariLanding() {
                   <br />
                   <span className="text-gray-400 font-light">Asghari</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-white max-w-lg leading-relaxed">
+                <p className="text-xl md:text-2xl text-gray-600 max-w-lg leading-relaxed">
                   Crafting visual stories through elegance, sophistication, and artistic expression
                 </p>
               </div>
 
               <div className="space-y-8">
-                <p className="text-lg text-white max-w-xl leading-relaxed">
+                <p className="text-lg text-gray-700 max-w-xl leading-relaxed">
                   Award-winning model specializing in high-fashion editorial, luxury brand campaigns, and artistic
                   collaborations. Every frame tells a story of passion, professionalism, and creative excellence.
                 </p>
@@ -260,7 +259,7 @@ export default function SamAsghariLanding() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
                     href="#portfolio"
-                    className="group bg-white text-black px-8 py-4 text-center font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                    className="group bg-black text-white px-8 py-4 text-center font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                   >
                     <span className="flex items-center justify-center">
                       View Portfolio
@@ -281,7 +280,7 @@ export default function SamAsghariLanding() {
                   </a>
                   <a
                     href="#contact"
-                    className="group border-2 border-white px-8 py-4 text-center font-medium hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
+                    className="group border-2 border-black px-8 py-4 text-center font-medium hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105"
                   >
                     <span className="flex items-center justify-center">
                       Let&apos;s Collaborate
@@ -307,15 +306,15 @@ export default function SamAsghariLanding() {
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
                 <div className="text-center">
                   <h3 className="text-3xl font-bold mb-2">50+</h3>
-                  <p className="text-white text-sm uppercase tracking-wider">Projects</p>
+                  <p className="text-gray-600 text-sm uppercase tracking-wider">Projects</p>
                 </div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold mb-2">25+</h3>
-                  <p className="text-white text-sm uppercase tracking-wider">Brands</p>
+                  <p className="text-gray-600 text-sm uppercase tracking-wider">Brands</p>
                 </div>
                 <div className="text-center">
                   <h3 className="text-3xl font-bold mb-2">5+</h3>
-                  <p className="text-white text-sm uppercase tracking-wider">Years</p>
+                  <p className="text-gray-600 text-sm uppercase tracking-wider">Years</p>
                 </div>
               </div>
             </div>
@@ -339,7 +338,7 @@ export default function SamAsghariLanding() {
       </section>
 
       {/* Enhanced About Section */}
-      <section id="about" className="py-24" style={{ backgroundColor: '#2a2a2a' }}>
+      <section id="about" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-10">
@@ -354,10 +353,10 @@ export default function SamAsghariLanding() {
                   <br />
                   <span className="text-gray-400">Professionalism</span>
                 </h2>
-                <div className="w-24 h-1 bg-white rounded-full"></div>
+                <div className="w-24 h-1 bg-black rounded-full"></div>
               </div>
 
-              <div className="space-y-6 text-white">
+              <div className="space-y-6 text-gray-700">
                 <p className="text-lg leading-relaxed">
                   With over 5 years of experience in the modeling industry, I have collaborated with world-renowned
                   photographers, fashion designers, and luxury brands to create compelling visual narratives that
@@ -373,14 +372,14 @@ export default function SamAsghariLanding() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-8 pt-8 text-black">
-                <div className="text-center p-6 bg-gray-50 rounded-xl ">
+              <div className="grid grid-cols-2 gap-8 pt-8">
+                <div className="text-center p-6 bg-gray-50 rounded-xl">
                   <h3 className="text-3xl font-bold mb-2">50+</h3>
-                  <p className=" font-medium">Projects Completed</p>
+                  <p className="text-gray-600 font-medium">Projects Completed</p>
                 </div>
                 <div className="text-center p-6 bg-gray-50 rounded-xl">
                   <h3 className="text-3xl font-bold mb-2">25+</h3>
-                  <p className=" font-medium">Brand Collaborations</p>
+                  <p className="text-gray-600 font-medium">Brand Collaborations</p>
                 </div>
               </div>
             </div>
@@ -424,7 +423,7 @@ export default function SamAsghariLanding() {
       </section>
 
       {/* Enhanced Portfolio Section */}
-      <section id="portfolio" className="py-24" style={{ backgroundColor: '#2a2a2a' }}>
+      <section id="portfolio" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <div className="inline-block mb-6">
@@ -435,8 +434,8 @@ export default function SamAsghariLanding() {
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               Featured <span className="text-gray-400">Work</span>
             </h2>
-            <div className="w-24 h-1 bg-white mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
+            <div className="w-24 h-1 bg-black mx-auto mb-8 rounded-full"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               A curated selection of my recent work showcasing versatility, artistic vision, and collaborative
               excellence across various creative disciplines
             </p>
@@ -553,7 +552,7 @@ export default function SamAsghariLanding() {
       </section>
 
       {/* Enhanced Contact Section */}
-      <section id="contact" className="py-24" style={{ backgroundColor: '#2a2a2a' }}>
+      <section id="contact" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20">
             <div className="space-y-10">
@@ -569,7 +568,7 @@ export default function SamAsghariLanding() {
                   <span className="text-gray-400">Together</span>
                 </h2>
                 <div className="w-24 h-1 bg-black rounded-full"></div>
-                <p className="text-xl text-white leading-relaxed">
+                <p className="text-xl text-gray-600 leading-relaxed">
                   Ready to bring your creative vision to life? Let&apos;s discuss your next project and explore the
                   possibilities of exceptional visual storytelling.
                 </p>
@@ -589,7 +588,7 @@ export default function SamAsghariLanding() {
                   </div>
                   <div>
                     <p className="font-semibold text-lg">Email</p>
-                    <p className="text-white">ali.asghari@email.com</p>
+                    <p className="text-gray-600">ali.asghari@email.com</p>
                   </div>
                 </div>
 
@@ -606,7 +605,7 @@ export default function SamAsghariLanding() {
                   </div>
                   <div>
                     <p className="font-semibold text-lg">Phone</p>
-                    <p className="text-white">+1 (555) 123-4567</p>
+                    <p className="text-gray-600">+1 (555) 123-4567</p>
                   </div>
                 </div>
 
@@ -629,19 +628,19 @@ export default function SamAsghariLanding() {
                   </div>
                   <div>
                     <p className="font-semibold text-lg">Location</p>
-                    <p className="text-white">Available Worldwide</p>
+                    <p className="text-gray-600">Available Worldwide</p>
                   </div>
                 </div>
               </div>
 
               <div className="flex space-x-6 pt-8">
-                <a href="#" className="text-black hover:text-white transition-colors font-medium">
+                <a href="#" className="text-black hover:text-gray-600 transition-colors font-medium">
                   Instagram
                 </a>
-                <a href="#" className="text-black hover:text-white transition-colors font-medium">
+                <a href="#" className="text-black hover:text-gray-600 transition-colors font-medium">
                   LinkedIn
                 </a>
-                <a href="#" className="text-black hover:text-white transition-colors font-medium">
+                <a href="#" className="text-black hover:text-gray-600 transition-colors font-medium">
                   Behance
                 </a>
               </div>
@@ -650,7 +649,7 @@ export default function SamAsghariLanding() {
             <div className="bg-gray-50 p-10 rounded-2xl">
               <form className="space-y-8">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-white mb-3">
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-3">
                     Full Name
                   </label>
                   <input
@@ -662,7 +661,7 @@ export default function SamAsghariLanding() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-white mb-3">
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3">
                     Email Address
                   </label>
                   <input
@@ -674,7 +673,7 @@ export default function SamAsghariLanding() {
                 </div>
 
                 <div>
-                  <label htmlFor="project" className="block text-sm font-semibold text-white mb-3">
+                  <label htmlFor="project" className="block text-sm font-semibold text-gray-700 mb-3">
                     Project Type
                   </label>
                   <select
@@ -690,7 +689,7 @@ export default function SamAsghariLanding() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-white mb-3">
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-3">
                     Project Details
                   </label>
                   <textarea
