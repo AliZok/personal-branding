@@ -6,6 +6,12 @@ export default function SamAsghariLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [showLoadingText, setShowLoadingText] = useState(true)
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set())
+
+  // Helper function to get animation class
+  const getAnimationClass = (elementId: string, animationType: string) => {
+    return animatedElements.has(elementId) ? animationType : 'opacity-0'
+  }
 
   // Smooth scroll function
   const scrollToSection = (sectionId: string) => {
@@ -76,6 +82,140 @@ export default function SamAsghariLanding() {
         text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
       }
     }
+    
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInFromRight {
+      0% {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInFromBottom {
+      0% {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInFromTop {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes rotateIn {
+      0% {
+        transform: rotate(-180deg) scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .animate-slide-in-left {
+      animation: slideInFromLeft 0.8s ease-out forwards;
+    }
+    
+    .animate-slide-in-right {
+      animation: slideInFromRight 0.8s ease-out forwards;
+    }
+    
+    .animate-slide-in-bottom {
+      animation: slideInFromBottom 0.8s ease-out forwards;
+    }
+    
+    .animate-slide-in-top {
+      animation: slideInFromTop 0.8s ease-out forwards;
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-zoom-in {
+      animation: zoomIn 0.8s ease-out forwards;
+    }
+    
+    .animate-rotate-in {
+      animation: rotateIn 1s ease-out forwards;
+    }
+    
+    .animate-bounce-in {
+      animation: bounceIn 1s ease-out forwards;
+    }
+    
+    .opacity-0 {
+      opacity: 0;
+    }
+    
+    .opacity-1 {
+      opacity: 1;
+    }
   `
 
   const carouselItems = [
@@ -115,6 +255,32 @@ export default function SamAsghariLanding() {
     }, 2000) // Show for 2 seconds total (1s to grow, 1s to stay, then disappear)
     
     return () => clearTimeout(timer)
+  }, [])
+
+  // Scroll animation observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const elementId = entry.target.getAttribute('data-animate-id')
+            if (elementId) {
+              setAnimatedElements(prev => new Set(prev).add(elementId))
+            }
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    )
+
+    // Observe all elements with data-animate-id
+    const animatedElements = document.querySelectorAll('[data-animate-id]')
+    animatedElements.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -352,22 +518,23 @@ export default function SamAsghariLanding() {
       <section
         id="home"
         className="pt-32 lg:pt-40 min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-white"
+        data-animate-id="hero-section"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-10">
               <div className="space-y-6">
-                <div className="inline-block">
+                <div className={`inline-block transition-all duration-1000 ${getAnimationClass('hero-badge', 'animate-bounce-in')}`} data-animate-id="hero-badge">
                   <span className="text-sm font-medium tracking-wider uppercase text-gray-500 bg-gray-100 px-4 py-2 rounded-full">
                     Professional Model
                   </span>
                 </div>
-                <h1 className="text-6xl md:text-8xl font-bold leading-none tracking-tight">
+                <h1 className={`text-6xl md:text-8xl font-bold leading-none tracking-tight transition-all duration-1000 ${getAnimationClass('hero-title', 'animate-slide-in-left')}`} data-animate-id="hero-title">
                   Sam
                   <br />
                   <span className="text-gray-400 font-light">Asghari</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-600 max-w-lg leading-relaxed">
+                <p className={`text-xl md:text-2xl text-gray-600 max-w-lg leading-relaxed transition-all duration-1000 ${getAnimationClass('hero-subtitle', 'animate-fade-in-up')}`} data-animate-id="hero-subtitle">
                   Crafting visual stories through elegance, sophistication, and artistic expression
                 </p>
               </div>
@@ -441,7 +608,7 @@ export default function SamAsghariLanding() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className={`relative transition-all duration-1000 ${getAnimationClass('hero-image', 'animate-zoom-in')}`} data-animate-id="hero-image">
               <div className="relative">
                 <div className="aspect-[3/4] bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden rounded-2xl shadow-2xl">
                   <img
@@ -451,8 +618,8 @@ export default function SamAsghariLanding() {
                   />
                 </div>
                 {/* Floating Elements */}
-                <div className="absolute -top-6 -right-6 w-24 h-24 bg-black rounded-full opacity-10"></div>
-                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-300 rounded-full opacity-20"></div>
+                <div className={`absolute -top-6 -right-6 w-24 h-24 bg-black rounded-full opacity-10 transition-all duration-1000 ${getAnimationClass('floating-element-1', 'animate-rotate-in')}`} data-animate-id="floating-element-1"></div>
+                <div className={`absolute -bottom-6 -left-6 w-32 h-32 bg-gray-300 rounded-full opacity-20 transition-all duration-1000 ${getAnimationClass('floating-element-2', 'animate-bounce-in')}`} data-animate-id="floating-element-2"></div>
               </div>
             </div>
           </div>
@@ -460,35 +627,35 @@ export default function SamAsghariLanding() {
       </section>
 
       {/* Enhanced About Section */}
-      <section id="about" className="py-24 bg-white">
+      <section id="about" className="py-24 bg-white" data-animate-id="about-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-10">
-              <div className="space-y-6">
-                <div className="inline-block">
-                  <span className="text-sm font-medium tracking-wider uppercase text-gray-500 bg-gray-100 px-4 py-2 rounded-full">
-                    About Me
-                  </span>
+                      <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div className="space-y-10">
+                <div className="space-y-6">
+                  <div className={`inline-block transition-all duration-1000 ${getAnimationClass('about-badge', 'animate-bounce-in')}`} data-animate-id="about-badge">
+                    <span className="text-sm font-medium tracking-wider uppercase text-gray-500 bg-gray-100 px-4 py-2 rounded-full">
+                      About Me
+                    </span>
+                  </div>
+                  <h2 className={`text-5xl md:text-6xl font-bold leading-tight transition-all duration-1000 ${getAnimationClass('about-title', 'animate-slide-in-left')}`} data-animate-id="about-title">
+                    Passion Meets
+                    <br />
+                    <span className="text-gray-400">Professionalism</span>
+                  </h2>
+                  <div className={`w-24 h-1 bg-black rounded-full transition-all duration-1000 ${getAnimationClass('about-line', 'animate-slide-in-left')}`} data-animate-id="about-line"></div>
                 </div>
-                <h2 className="text-5xl md:text-6xl font-bold leading-tight">
-                  Passion Meets
-                  <br />
-                  <span className="text-gray-400">Professionalism</span>
-                </h2>
-                <div className="w-24 h-1 bg-black rounded-full"></div>
-              </div>
 
               <div className="space-y-6 text-gray-700">
-                <p className="text-lg leading-relaxed">
+                <p className={`text-lg leading-relaxed transition-all duration-1000 ${getAnimationClass('about-text-1', 'animate-fade-in-up')}`} data-animate-id="about-text-1">
                   With over 5 years of experience in the modeling industry, I have collaborated with world-renowned
                   photographers, fashion designers, and luxury brands to create compelling visual narratives that
                   resonate globally.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className={`text-lg leading-relaxed transition-all duration-1000 ${getAnimationClass('about-text-2', 'animate-fade-in-up')}`} data-animate-id="about-text-2">
                   My approach seamlessly blends technical precision with creative intuition, ensuring every project
                   delivers exceptional results that exceed expectations and push creative boundaries.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className={`text-lg leading-relaxed transition-all duration-1000 ${getAnimationClass('about-text-3', 'animate-fade-in-up')}`} data-animate-id="about-text-3">
                   Based internationally, I work with clients worldwide and am always excited to embark on new creative
                   journeys that challenge conventional perspectives.
                 </p>
@@ -508,14 +675,14 @@ export default function SamAsghariLanding() {
 
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6">
-                <div className="aspect-[3/4] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className={`aspect-[3/4] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-1000 ${getAnimationClass('about-img-1', 'animate-zoom-in')}`} data-animate-id="about-img-1">
                   <img
                     src="/images/sam6.jpg"
                     alt="Sam Asghari modeling"
                     className="object-cover hover:scale-105 transition-transform duration-500 w-full h-full"
                   />
                 </div>
-                <div className="aspect-square bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className={`aspect-square bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-1000 ${getAnimationClass('about-img-2', 'animate-slide-in-bottom')}`} data-animate-id="about-img-2">
                   <img
                     src="/images/sam7.jpg"
                     alt="Sam Asghari artistic shot"
@@ -524,14 +691,14 @@ export default function SamAsghariLanding() {
                 </div>
               </div>
               <div className="space-y-6 pt-12">
-                <div className="aspect-square bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className={`aspect-square bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-1000 ${getAnimationClass('about-img-3', 'animate-slide-in-top')}`} data-animate-id="about-img-3">
                   <img
                     src="/images/sam8.jpg"
                     alt="Sam Asghari commercial"
                     className="object-cover hover:scale-105 transition-transform duration-500 w-full h-full"
                   />
                 </div>
-                <div className="aspect-[3/4] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className={`aspect-[3/4] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-1000 ${getAnimationClass('about-img-4', 'animate-rotate-in')}`} data-animate-id="about-img-4">
                   <img
                     src="/images/sam9.jpg"
                     alt="Sam Asghari full body"
@@ -545,19 +712,19 @@ export default function SamAsghariLanding() {
       </section>
 
       {/* Enhanced Portfolio Section */}
-      <section id="portfolio" className="py-24 bg-gray-50">
+      <section id="portfolio" className="py-24 bg-gray-50" data-animate-id="portfolio-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-block mb-6">
+            <div className={`inline-block mb-6 transition-all duration-1000 ${getAnimationClass('portfolio-badge', 'animate-bounce-in')}`} data-animate-id="portfolio-badge">
               <span className="text-sm font-medium tracking-wider uppercase text-gray-500 bg-white px-4 py-2 rounded-full">
                 Portfolio
               </span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className={`text-5xl md:text-6xl font-bold mb-6 transition-all duration-1000 ${getAnimationClass('portfolio-title', 'animate-slide-in-bottom')}`} data-animate-id="portfolio-title">
               Featured <span className="text-gray-400">Work</span>
             </h2>
-            <div className="w-24 h-1 bg-black mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <div className={`w-24 h-1 bg-black mx-auto mb-8 rounded-full transition-all duration-1000 ${getAnimationClass('portfolio-line', 'animate-slide-in-bottom')}`} data-animate-id="portfolio-line"></div>
+            <p className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 ${getAnimationClass('portfolio-subtitle', 'animate-fade-in-up')}`} data-animate-id="portfolio-subtitle">
               A curated selection of my recent work showcasing versatility, artistic vision, and collaborative
               excellence across various creative disciplines
             </p>
@@ -566,7 +733,7 @@ export default function SamAsghariLanding() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((item) => (
               <div key={item} className="group cursor-pointer">
-                <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+                <div className={`aspect-[4/5] bg-gray-200 relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-1000 ${getAnimationClass(`portfolio-item-${item}`, 'animate-zoom-in')}`} data-animate-id={`portfolio-item-${item}`}>
                   <img
                     src={`/images/sam${item}.jpg`}
                     alt={`Portfolio image ${item}`}
