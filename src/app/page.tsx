@@ -37,7 +37,7 @@ export default function SamAsghariLanding() {
   }, [carouselItems.length])
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-white text-black overflow-x-hidden">
       {/* Fixed Header */}
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-100 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,25 +165,25 @@ export default function SamAsghariLanding() {
 
       {/* Hero Carousel Section */}
       <section id="home" className="h-screen relative overflow-hidden">
-        <div className="relative h-full">
+        <div className="relative h-full w-full">
           <div
-            className="flex transition-transform duration-700 ease-in-out h-full"
+            className="flex transition-transform duration-700 ease-in-out h-full w-full"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {carouselItems.map((item, index) => (
-              <div key={index} className="w-full flex-shrink-0 h-full">
-                <div className="relative h-full">
+              <div key={index} className="w-full flex-shrink-0 h-full min-w-full">
+                <div className="relative h-full w-full">
                   <img src={item.image || "/placeholder.svg"} alt={item.title} className="object-cover w-full h-full" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-20 left-8 md:left-16 text-white max-w-2xl">
-                    <h3 className="text-4xl md:text-6xl font-bold mb-4">{item.title}</h3>
-                    <p className="text-lg md:text-xl text-gray-200 mb-8">{item.subtitle}</p>
+                  <div className="absolute bottom-16 md:bottom-20 left-4 md:left-8 lg:left-16 text-white max-w-xs md:max-w-2xl">
+                    <h3 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-4">{item.title}</h3>
+                    <p className="text-sm md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-8">{item.subtitle}</p>
                     <a
                       href="#portfolio"
-                      className="inline-flex items-center bg-white text-black px-8 py-4 font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                      className="inline-flex items-center bg-white text-black px-4 md:px-8 py-2 md:py-4 text-sm md:text-base font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
                     >
                       View Portfolio
-                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 md:w-4 md:h-4 ml-1 md:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </a>
@@ -194,13 +194,13 @@ export default function SamAsghariLanding() {
           </div>
 
           {/* Carousel Indicators */}
-          <div className="absolute bottom-8 right-8 flex space-x-2">
+          <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex space-x-2">
             {carouselItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide ? "bg-white w-8" : "bg-white/50"
+                  index === currentSlide ? "bg-white w-6 md:w-8" : "bg-white/50"
                 }`}
               />
             ))}
@@ -209,17 +209,17 @@ export default function SamAsghariLanding() {
           {/* Carousel Navigation */}
           <button
             onClick={() => setCurrentSlide((prev) => (prev - 1 + carouselItems.length) % carouselItems.length)}
-            className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <button
             onClick={() => setCurrentSlide((prev) => (prev + 1) % carouselItems.length)}
-            className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
