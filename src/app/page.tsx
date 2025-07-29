@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 export default function SamAsghariLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [showLoadingText, setShowLoadingText] = useState(true)
 
   // Smooth scroll function
   const scrollToSection = (sectionId: string) => {
@@ -40,6 +41,41 @@ export default function SamAsghariLanding() {
     ::-webkit-scrollbar-thumb:active {
       background: rgba(20, 31, 25, 1);
     }
+    
+    @keyframes scale {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+    
+    @keyframes magicGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+      }
+    }
   `
 
   const carouselItems = [
@@ -72,9 +108,38 @@ export default function SamAsghariLanding() {
     return () => clearInterval(timer)
   }, [carouselItems.length])
 
+  // Loading text animation effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoadingText(false)
+    }, 2000) // Show for 2 seconds total (1s to grow, 1s to stay, then disappear)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
+      
+      {/* Animated Loading Text */}
+      {showLoadingText && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="text-center">
+            <div className="text-white text-4xl md:text-6xl lg:text-8xl font-bold tracking-wider" style={{ animation: 'magicGlow 2s ease-in-out infinite' }}>
+              <div className="transform mb-[30px] text-xl md:text-xl lg:text-2xl" style={{ animation: 'scale 1s ease-out forwards' }}>
+                by
+              </div>
+              <div className="transform mt-2" style={{ animation: 'scale 1s ease-out 0.3s forwards' }}>
+                ALI ZOKAEI
+              </div>
+            </div>
+            <div className="mt-8 flex justify-center">
+              <div className="w-16 h-1 bg-white rounded-full" style={{ animation: 'pulse 1s ease-in-out infinite' }}></div>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <div 
         className="min-h-screen bg-white text-black overflow-x-hidden" 
         style={{ 
