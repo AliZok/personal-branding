@@ -17,6 +17,31 @@ export default function SamAsghariLanding() {
     }
   }
 
+  // Custom scrollbar styles
+  const scrollbarStyles = `
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(20, 31, 25, 0.6);
+      border-radius: 4px;
+      backdrop-filter: blur(10px);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(20, 31, 25, 0.8);
+    }
+    
+    ::-webkit-scrollbar-thumb:active {
+      background: rgba(20, 31, 25, 1);
+    }
+  `
+
   const carouselItems = [
     {
       image: "/images/sam1.jpg",
@@ -48,7 +73,16 @@ export default function SamAsghariLanding() {
   }, [carouselItems.length])
 
   return (
-    <div className="min-h-screen bg-white text-black overflow-x-hidden" style={{ scrollBehavior: 'smooth' }}>
+    <>
+      <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
+      <div 
+        className="min-h-screen bg-white text-black overflow-x-hidden" 
+        style={{ 
+          scrollBehavior: 'smooth',
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'rgba(20, 31, 25, 0.6) transparent'
+        }}
+      >
       {/* Fixed Header */}
       <header className="fixed top-0 w-full bg-[#141f1991] backdrop-blur-md border-b border-white/10 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,35 +95,35 @@ export default function SamAsghariLanding() {
             <nav className="hidden lg:flex items-center space-x-12">
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group"
+                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group cursor-pointer"
               >
                 Home
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group"
+                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group cursor-pointer"
               >
                 About
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group"
+                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group cursor-pointer"
               >
                 Portfolio
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group"
+                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group cursor-pointer"
               >
                 Services
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group"
+                className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 relative group cursor-pointer"
               >
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -100,14 +134,14 @@ export default function SamAsghariLanding() {
             <div className="hidden lg:block">
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-white text-black px-6 py-2 text-sm font-medium hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-black px-6 py-2 text-sm font-medium hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 cursor-pointer"
               >
                 Book Now
               </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className="lg:hidden cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <div className="w-6 h-6 flex flex-col justify-center items-center">
                 <span
                   className={`bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"}`}
@@ -131,7 +165,7 @@ export default function SamAsghariLanding() {
                     scrollToSection('home')
                     setIsMenuOpen(false)
                   }}
-                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left"
+                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left cursor-pointer"
                 >
                   Home
                 </button>
@@ -140,7 +174,7 @@ export default function SamAsghariLanding() {
                     scrollToSection('about')
                     setIsMenuOpen(false)
                   }}
-                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left"
+                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left cursor-pointer"
                 >
                   About
                 </button>
@@ -149,7 +183,7 @@ export default function SamAsghariLanding() {
                     scrollToSection('portfolio')
                     setIsMenuOpen(false)
                   }}
-                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left"
+                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left cursor-pointer"
                 >
                   Portfolio
                 </button>
@@ -158,7 +192,7 @@ export default function SamAsghariLanding() {
                     scrollToSection('services')
                     setIsMenuOpen(false)
                   }}
-                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left"
+                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left cursor-pointer"
                 >
                   Services
                 </button>
@@ -167,7 +201,7 @@ export default function SamAsghariLanding() {
                     scrollToSection('contact')
                     setIsMenuOpen(false)
                   }}
-                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left"
+                  className="text-lg font-medium text-white hover:text-gray-300 transition-colors text-left cursor-pointer"
                 >
                   Contact
                 </button>
@@ -176,7 +210,7 @@ export default function SamAsghariLanding() {
                     scrollToSection('contact')
                     setIsMenuOpen(false)
                   }}
-                  className="bg-white text-black px-6 py-3 text-center font-medium hover:bg-gray-200 transition-colors"
+                  className="bg-white text-black px-6 py-3 text-center font-medium hover:bg-gray-200 transition-colors cursor-pointer"
                 >
                   Book Now
                 </button>
@@ -203,7 +237,7 @@ export default function SamAsghariLanding() {
                     <p className="text-sm md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-8">{item.subtitle}</p>
                     <button
                       onClick={() => scrollToSection('portfolio')}
-                      className="inline-flex items-center bg-white text-black px-4 md:px-8 py-2 md:py-4 text-sm md:text-base font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                      className="inline-flex items-center bg-white text-black px-4 md:px-8 py-2 md:py-4 text-sm md:text-base font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     >
                       View Portfolio
                       <svg className="w-3 h-3 md:w-4 md:h-4 ml-1 md:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,7 +256,7 @@ export default function SamAsghariLanding() {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   index === currentSlide ? "bg-white w-6 md:w-8" : "bg-white/50"
                 }`}
               />
@@ -232,7 +266,7 @@ export default function SamAsghariLanding() {
           {/* Carousel Navigation */}
           <button
             onClick={() => setCurrentSlide((prev) => (prev - 1 + carouselItems.length) % carouselItems.length)}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer"
           >
             <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -240,7 +274,7 @@ export default function SamAsghariLanding() {
           </button>
           <button
             onClick={() => setCurrentSlide((prev) => (prev + 1) % carouselItems.length)}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer"
           >
             <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -282,7 +316,7 @@ export default function SamAsghariLanding() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => scrollToSection('portfolio')}
-                    className="group bg-black text-white px-8 py-4 text-center font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                    className="group bg-black text-white px-8 py-4 text-center font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg cursor-pointer"
                   >
                     <span className="flex items-center justify-center">
                       View Portfolio
@@ -303,7 +337,7 @@ export default function SamAsghariLanding() {
                   </button>
                   <button
                     onClick={() => scrollToSection('contact')}
-                    className="group border-2 border-black px-8 py-4 text-center font-medium hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105"
+                    className="group border-2 border-black px-8 py-4 text-center font-medium hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer"
                   >
                     <span className="flex items-center justify-center">
                       Let&apos;s Collaborate
@@ -486,7 +520,7 @@ export default function SamAsghariLanding() {
           <div className="text-center mt-16">
             <button
               onClick={() => scrollToSection('contact')}
-              className="inline-flex items-center bg-black text-white px-8 py-4 font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 rounded-lg"
+              className="inline-flex items-center bg-black text-white px-8 py-4 font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 rounded-lg cursor-pointer"
             >
               View Full Portfolio
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -725,7 +759,7 @@ export default function SamAsghariLanding() {
 
                 <button
                   type="submit"
-                  className="w-full bg-black text-white py-4 rounded-xl font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  className="w-full bg-black text-white py-4 rounded-xl font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-lg cursor-pointer"
                 >
                   Send Message
                 </button>
@@ -763,5 +797,6 @@ export default function SamAsghariLanding() {
         </div>
       </footer>
     </div>
+    </>
   )
 }
